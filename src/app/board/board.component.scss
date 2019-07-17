@@ -18,7 +18,21 @@
     }
     
     .row {
-        margin: 30px;
+        margin-top: 30px;
+        background-color: #0086b3;
+        padding: 20px;
+    }
+
+    .column {
+        background-color: white;
+        border-radius: 50%;
+        margin-bottom: 10px;
+        width: 60px;
+        height: 60px;
+
+        &:hover {
+            background-color: rgba(229, 168, 39, 0.5);
+        }
     }
 }
 
