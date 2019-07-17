@@ -21,16 +21,24 @@
             </button>
         </div>
         <div class="alert-danger">
-            <div class="alert" *ngIf="connectForm.controls['n'].invalid">
+            <div 
+            class="alert" 
+            *ngIf="connectForm.controls['n'].invalid">
                 *Number is required and should be between 4 and 10.
             </div>
         </div>
         <div 
         class="table-container"
         *ngIf="showTable">
-            <div class="row" *ngFor="let row of matrix">
-                <div class="column" *ngFor="let column of row">
-                    hi
+            <div 
+            *ngFor="let row of matrix; let rows = index"
+            class="row">
+                <div 
+                *ngFor="let column of row; let columns = index" 
+                class="column"
+                ngClass="{'secondColor': player === playerOne}"
+                (click)="dropPiece(rows, columns)">
+                {{rows +' '+columns}}
                 </div>
             </div>
         </div>
