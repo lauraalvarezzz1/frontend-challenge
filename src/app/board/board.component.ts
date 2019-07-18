@@ -51,6 +51,7 @@ export class BoardComponent implements OnInit {
         this.matrix[i][j] = 0;
       }
     }
+    console.log(this.matrix);
   }
 
   resetTable() {
@@ -63,17 +64,16 @@ export class BoardComponent implements OnInit {
   dropPiece(rows, columns) {
     if (this.controlTable && this.matrix[rows][columns] === 0) {
       this.controlTable = false;
-      this.matrix[0][rows] = this.selectPlayer;
-      this.activePice(1, columns);
+      this.activePice(rows, 1);
       console.log(this.matrix);
     }
   }
 
   activePice(rows, columns) {
-    if (typeof this.matrix[rows] !== 'undefined' && this.matrix[rows][columns] === 0 && rows < this.rows) {
-      this.matrix[rows - 1][columns] = 0;
+    if (typeof this.matrix[rows][columns] !== 'undefined' && this.matrix[rows][columns] === 0 && columns < this.columns) {
+      this.matrix[rows][columns - 1] = 0;
       this.matrix[rows][columns] = this.selectPlayer;
-      this.activePice(rows + 1, columns);
+      this.activePice(rows, columns + 1);
     } else {
       this.selectPlayer = this.selectPlayer === 'player1' ? 'player2' : 'player1';
       this.controlTable = true;
