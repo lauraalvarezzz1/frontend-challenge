@@ -36,12 +36,17 @@
                 <div 
                 *ngFor="let column of row; let columns = index" 
                 class="column"
-                ngClass="{'secondColor': player === playerOne}"
+                [ngClass]="{'playerOne': column === 'player1', 'playerTwo': column === 'player2'}"
                 (click)="dropPiece(rows, columns)">
                 {{rows +' '+columns}}
                 </div>
             </div>
         </div>
+        <button
+        *ngIf="enableUndo"
+        (click)="undoLastPlay(rows, columns)">
+            Repetir Jugada
+        </button>
         <div
         *ngIf="!showTable">
            <p>Let's do it!</p>
