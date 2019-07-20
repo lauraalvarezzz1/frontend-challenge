@@ -43,9 +43,10 @@
             </div>
         </div>
         <button
+        class="button-class repeat-button"
         *ngIf="enableUndo"
-        (click)="undoLastPlay(rows, columns)">
-            Repetir Jugada
+        (click)="undoLastPlay()">
+            Repeat Last Play
         </button>
         <div
         *ngIf="!showTable">
