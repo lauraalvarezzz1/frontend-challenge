@@ -1,0 +1,47 @@
+.container {
+    font-family:Trebuchet MS;
+    text-align: center;
+    
+    .paragraph {
+        font-size: 30px;
+    }
+
+    .button-class {
+        box-shadow:inset 0px 1px 0px 0px #f29c93;
+        background:linear-gradient(to bottom, #fe1a00 5%, #ce0100 100%);
+        border-radius:6px;
+        border:1px solid #d83526;
+        display:inline-block;
+        cursor:pointer;
+        color:#ffffff;
+        font-family:Trebuchet MS;
+        font-size:20px;
+        font-weight:bold;
+        font-style:italic;
+        padding: 6px 24px;
+        text-shadow:0px 1px 0px #b23e35;
+        margin-left: 20px;
+    
+        &:active {
+            position:relative;
+            top:1px;
+        }
+    }
+    
+    .input-class {
+        padding: 5px;
+        font-size: 20px;
+        border-width: 1px;
+        border-color: #CCCCCC;
+        background-color: #FFFFFF;
+        color: #000000;
+        border-style: solid;
+        border-radius: 0px;
+        box-shadow: 0px 0px 5px rgba(66,66,66,.75);
+        text-shadow: 0px 0px 0px rgba(66,66,66,.75);
+    
+        &:focus {
+            outline:none;
+        }
+    }
+}

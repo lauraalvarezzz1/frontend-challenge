@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { WinnerDialogComponent } from '../winner-dialog/winner-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
+import { TieDialogComponent } from '../tie-dialog/tie-dialog.component';
 
 @Component({
   selector: 'app-board',
@@ -23,7 +26,8 @@ export class BoardComponent implements OnInit {
   pieces: number;
   counterPieces: number;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder,
+              public dialog: MatDialog) {
     this.connectForm = this.formBuilder.group({
       n: ['', [Validators.required, Validators.min(4), Validators.max(10)]]
   });
@@ -98,11 +102,24 @@ export class BoardComponent implements OnInit {
   validateWinner(rows, columns) {
     this.lastRow = rows;
     this.lastColumn = columns;
-    console.log(this.matrix);
     this.checkVertical(rows);
     this.checkHorizontal(columns);
     this.checkDiagonalFromLeft(rows, columns);
     this.checkDiagonalFromRight(rows, columns);
+
+    if (this.thereIsWinner) {
+      const dialogRef = this.dialog.open(WinnerDialogComponent, {
+        height: '200px',
+        width: '480px',
+        data: {
+          player: this.selectPlayer
+        }
+      });
+
+      dialogRef.afterClosed().subscribe(result => {
+        this.resetTable();
+      });
+    }
     this.validatePieces();
   }
 
@@ -115,8 +132,6 @@ export class BoardComponent implements OnInit {
         count = count + 1;
         if (count === this.connectForm.value.n) {
           this.thereIsWinner = true;
-          console.log ('gana jugador', count);
-          console.log(this.selectPlayer);
         }
       } else {
         count = 1;
@@ -133,8 +148,6 @@ export class BoardComponent implements OnInit {
             count = count + 1;
             if (count === this.connectForm.value.n) {
               this.thereIsWinner = true;
-              console.log ('gana jugador', count);
-              console.log(this.selectPlayer);
             }
       } else {
         count = 1;
@@ -157,8 +170,6 @@ export class BoardComponent implements OnInit {
             count = count + 1;
             if (count === this.connectForm.value.n) {
               this.thereIsWinner = true;
-              console.log ('gana jugador', count);
-              console.log(this.selectPlayer);
             }
         } else {
           count = 1;
@@ -183,8 +194,6 @@ export class BoardComponent implements OnInit {
             count = count + 1;
             if (count === this.connectForm.value.n) {
               this.thereIsWinner = true;
-              console.log ('gana jugador', count);
-              console.log(this.selectPlayer);
             }
         } else {
           count = 1;
@@ -196,7 +205,14 @@ export class BoardComponent implements OnInit {
 
   validatePieces() {
     if (this.pieces === this.counterPieces) {
-      console.log('empate');
+      const dialogRef = this.dialog.open(TieDialogComponent, {
+        height: '200px',
+        width: '480px'
+      });
+
+      dialogRef.afterClosed().subscribe(result => {
+        this.resetTable();
+      });
     }
   }
 
@@ -213,8 +229,9 @@ export class BoardComponent implements OnInit {
 
   resetTable() {
     this.showTable = false;
-    this.matrix = [];
     this.clicked = false;
+    this.thereIsWinner = false;
+    this.matrix = [];
     this.selectPlayer = 'player1';
     this.connectForm.reset();
     this.counterPieces = 0;
