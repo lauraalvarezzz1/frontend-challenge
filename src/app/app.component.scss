@@ -4,4 +4,30 @@
         padding-bottom: 20px;
         text-align: center;
     }
+
+    .player-information {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    .first-player,
+    .second-player {
+        border-radius: 50%;
+        color: #fff;
+        font-size: 12px;
+        margin: 5px;
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center
+    }
+
+    .first-player {
+        background-color: rgb(67, 189, 28);
+    }
+
+    .second-player {
+        background-color: rgb(185, 24, 156);
+    }
 }

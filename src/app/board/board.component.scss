@@ -37,6 +37,20 @@
         &.playerTwo {
             background-color: rgb(185, 24, 156);
         }
+
+        &.hoverFirstPlayer.hoverExceptPlayers {
+            &:hover {
+                background-color: rgb(67, 189, 28);
+                cursor: pointer;
+            }
+        }
+
+        &.hoverSecondPlayer.hoverExceptPlayers {
+            &:hover {
+                background-color: rgb(185, 24, 156);
+                cursor: pointer;
+            }
+        }
     }
 }
 

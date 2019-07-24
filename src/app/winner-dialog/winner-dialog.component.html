@@ -1,7 +1,19 @@
 <div class="container">
-  <p class="paragraph">
-    The winner is {{data.player}}
-  </p>
+  <div class="winner-info">
+    <p class="paragraph">
+        The winner is 
+      </p>
+      <div 
+      *ngIf="validateWinner"
+      class="player-information">
+        <div class="first-player">Player 1</div>
+      </div>
+      <div 
+      *ngIf="!validateWinner"
+      class="player-information">
+        <div class="second-player">Player 2</div>
+      </div>
+  </div>
   <button 
   class="button-class"
   (click)="closeDialog()">

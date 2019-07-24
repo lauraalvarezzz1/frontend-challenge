@@ -35,7 +35,6 @@ export class BoardComponent implements OnInit {
 
   ngOnInit() {
     this.counterPieces = 0;
-    this.showTable = false;
     this.enableUndo = false;
     this.thereIsWinner = false;
     this.matrix = [];
@@ -65,7 +64,6 @@ export class BoardComponent implements OnInit {
         this.matrix[i][j] = 0;
       }
     }
-    console.log(this.matrix);
   }
 
   dropPiece(rows, columns) {
@@ -80,6 +78,8 @@ export class BoardComponent implements OnInit {
       } else {
         this.enableUndo = true;
       }
+    } else {
+      this.counterPieces -= 1;
     }
   }
 
@@ -212,6 +212,7 @@ export class BoardComponent implements OnInit {
 
       dialogRef.afterClosed().subscribe(result => {
         this.resetTable();
+        this.enableUndo = false;
       });
     }
   }
@@ -231,6 +232,7 @@ export class BoardComponent implements OnInit {
     this.showTable = false;
     this.clicked = false;
     this.thereIsWinner = false;
+    this.enableUndo = false;
     this.matrix = [];
     this.selectPlayer = 'player1';
     this.connectForm.reset();

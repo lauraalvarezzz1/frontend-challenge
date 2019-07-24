@@ -36,9 +36,13 @@
                 <div 
                 *ngFor="let column of row; let columns = index" 
                 class="column"
-                [ngClass]="{'playerOne': column === 'player1', 'playerTwo': column === 'player2'}"
+                [ngClass]="{
+                    'playerOne': column === 'player1',
+                    'playerTwo': column === 'player2',
+                    'hoverFirstPlayer': selectPlayer === 'player1',
+                    'hoverExceptPlayers': column === 0,
+                    'hoverSecondPlayer': selectPlayer === 'player2'}"
                 (click)="dropPiece(rows, columns)">
-                {{rows +' '+columns}}
                 </div>
             </div>
         </div>

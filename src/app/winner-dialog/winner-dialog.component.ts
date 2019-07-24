@@ -10,7 +10,14 @@ export class WinnerDialogComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<WinnerDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any) { }
 
+  validateWinner: boolean;
+
   ngOnInit() {
+    if (this.data.player === 'player1') {
+      this.validateWinner = true;
+    } else {
+      this.validateWinner = false;
+    }
   }
 
   onNoClick(): void {
