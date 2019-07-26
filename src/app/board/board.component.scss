@@ -20,15 +20,11 @@
     .row {
         margin-top: 30px;
         background-color: #0086b3;
-        padding: 20px;
     }
 
     .column {
         background-color: white;
         border-radius: 50%;
-        margin-bottom: 10px;
-        width: 60px;
-        height: 60px;
 
         &.playerOne {
             background-color: rgb(67, 189, 28);
@@ -100,4 +96,94 @@
 
 .repeat-button {
     margin: 20px 0;
+}
+
+@media (max-width: 440px) {
+    .row {
+        padding: 3px;
+    }
+
+    .column {
+        margin-bottom: 5px;
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media (min-width: 441px) and (max-width: 598px) {
+    .row {
+        padding: 3px;
+    }
+
+    .column {
+        margin-bottom: 8px;
+        width: 30px;
+        height: 30px;
+    }
+
+    .input-class {
+        margin: 20px;
+        width: 70%;
+    }
+
+    .button-class {
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+
+    .reset-button {
+        margin-left: 10px;
+    }
+}
+
+@media (max-width: 598px) {
+    .input-class {
+        margin: 20px;
+        width: 70%;
+    }
+
+    .button-class {
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+
+    .reset-button {
+        margin-left: 10px;
+    }
+}
+
+@media (min-width: 599px) and (max-width: 768px) {
+    .row {
+        padding: 4px;
+    }
+
+    .column {
+        margin-bottom: 8px;
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+    .row {
+        padding: 7px;
+    }
+
+    .column {
+        margin-bottom: 8px;
+        width: 48px;
+        height: 48px;
+    }
+}
+
+@media (min-width: 993px) {
+    .row {
+        padding: 10px;
+    }
+
+    .column {
+        margin-bottom: 8px;
+        width: 60px;
+        height: 60px;
+    }
 }
